@@ -1,0 +1,18 @@
+{
+  "name": "playwright-testing-project",
+  "version": "1.0.0",
+  "description": "Playwright testing project for automated browser testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "codegen": "playwright codegen"
+  },
+  "keywords": ["playwright", "testing", "automation"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
