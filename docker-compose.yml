@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: playwright-tests
+    volumes:
+      - ./tests:/app/tests
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+    environment:
+      - CI=true
+    command: npm test

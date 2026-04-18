@@ -21,6 +21,8 @@ npx playwright install
 
 ## Running Tests
 
+### Local Setup (without Docker)
+
 Run all tests:
 ```bash
 npm test
@@ -41,12 +43,70 @@ Generate test code:
 npm run codegen
 ```
 
+### Using Docker (Recommended)
+
+No need to install Node.js, npm, or Playwright browsers locally! Everything runs in a Docker container.
+
+**Prerequisites:**
+- Docker installed on your machine
+
+**Run tests with Docker:**
+```bash
+docker-compose up
+```
+
+This command will:
+1. Build the Docker image with all dependencies
+2. Install Node.js and Playwright browsers inside the container
+3. Run all Playwright tests
+4. Generate HTML and JUnit reports in `playwright-report/` and `test-results/`
+
+**View test reports:**
+After running tests with Docker, the reports are available locally:
+- HTML Report: `playwright-report/index.html`
+- JUnit Report: `test-results/junit.xml`
+
+**Run specific tests:**
+```bash
+docker-compose run playwright-tests npx playwright test tests/loginAndVerifyCategory1.spec.ts
+```
+
+**Run tests in headed mode (with browser UI):**
+```bash
+docker-compose run playwright-tests npx playwright test --headed
+```
+
+**Clean up Docker containers:**
+```bash
+docker-compose down
+```
+
 ## Project Structure
 
 - `tests/` - Test files
 - `playwright.config.ts` - Playwright configuration
 - `tsconfig.json` - TypeScript configuration
 - `package.json` - Project dependencies and scripts
+- `Dockerfile` - Docker configuration for containerization
+- `docker-compose.yml` - Docker Compose configuration for easy setup
+
+## Docker Setup
+
+This project is fully containerized using Docker. You don't need to install Node.js, npm, or Playwright browsers on your machine.
+
+### Docker Files
+
+- **Dockerfile** - Based on Microsoft's official Playwright image with Node.js pre-installed
+- **docker-compose.yml** - Orchestrates the test environment with volume mounts for reports
+- **.dockerignore** - Excludes unnecessary files from Docker build context
+
+### Quick Start with Docker
+
+1. Clone the repository
+2. Navigate to the project directory
+3. Run: `docker-compose up`
+
+That's it! Tests will run in a fully isolated Docker container with all dependencies pre-installed.
 
 ## Configuration
 

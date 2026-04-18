@@ -1,0 +1,8 @@
+# Docker
+
+# Build artifacts
+docker-image/
+
+# Playwright reports
+playwright-report/
+test-results/
