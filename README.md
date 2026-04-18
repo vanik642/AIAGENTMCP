@@ -57,7 +57,38 @@ Edit `playwright.config.ts` to:
 - Adjust retries and timeouts
 - Configure reporters
 
+## CI/CD Pipeline
+
+This project includes a GitHub Actions CI/CD workflow that:
+
+- **Triggers:** Automatically runs on every push to the `main` branch
+- **Tests:** Executes all Playwright tests
+- **Artifacts:** Uploads HTML test reports and test results
+- **Reporting:** Publishes test results to GitHub Actions
+
+### Workflow Details
+
+The CI/CD pipeline (`.github/workflows/playwright.yml`) performs the following steps:
+
+1. Checks out the code
+2. Sets up Node.js (v18.x)
+3. Installs dependencies
+4. Installs Playwright browsers with dependencies
+5. Runs all Playwright tests
+6. Uploads HTML report to artifacts (30-day retention)
+7. Publishes test results to GitHub Actions
+
+### Accessing Test Reports
+
+After the workflow runs, you can access the test artifacts:
+
+1. Go to your GitHub Actions tab
+2. Click on the latest workflow run
+3. Scroll down to find "Artifacts" section
+4. Download `playwright-report` to view the HTML report
+
 ## Resources
 
 - [Playwright Documentation](https://playwright.dev)
 - [API Reference](https://playwright.dev/docs/api/class-playwright)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
